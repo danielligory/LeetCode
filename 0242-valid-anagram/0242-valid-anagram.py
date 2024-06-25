@@ -1,15 +1,22 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        list_s = list(s)
-        list_t = list(t)
         if len(s) != len(t):
             return False
-        for i in range(len(s)):
-            if list_s[0] in list_t:
-                list_t.remove(list_s[0])
-                list_s.remove(list_s[0])
         
-        return list_t == [] and list_s == []
-            
+        dic_s = {}
+        dic_t = {}
         
-        
+        for char in s:
+            if char in dic_s:
+                dic_s[char] += 1
+            else:
+                dic_s[char] = 1
+                
+        for char in t:
+            if char in dic_t:
+                dic_t[char] += 1
+            else:
+                dic_t[char] = 1
+                
+        return dic_s == dic_t
+                
